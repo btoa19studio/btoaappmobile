@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Login - BtoaApp</title>
+    <link rel="stylesheet" href="css/tema.css">
+    <style>
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-form h1 {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--background-secondary);
+            color: var(--text-primary);
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+            flex-grow: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .btn-secondary {
+            background-color: var(--background-tertiary);
+            color: var(--text-primary);
+        }
+        #error-message {
+            text-align: center;
+            color: #e74c3c;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h1>Selamat Datang</h1>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="email@anda.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            <div class="btn-group">
+                <button id="login-btn" class="btn btn-primary">Masuk</button>
+                <button id="signup-btn" class="btn btn-secondary">Daftar</button>
+            </div>
+            <p id="error-message"></p>
+        </div>
+    </div>
+    
+    <!-- Login Logic uses modern JavaScript modules -->
+    <script src="js/login.js" type="module"></script>
+</body>
+</html>

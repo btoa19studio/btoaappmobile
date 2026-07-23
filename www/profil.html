@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Halaman Profil - BtoaApp</title>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Memanggil CSS Global dan CSS Khusus Profil -->
+    <link rel="stylesheet" href="css/tema.css?v=12">
+    <link rel="stylesheet" href="css/profil.css?v=12">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="header">
+            <a href="dashboard.html" class="icon-btn" style="text-decoration: none; color: inherit;"><i class="bi bi-arrow-left"></i></a>
+            <h1 class="header-title">Profil Saya</h1>
+            <div style="width: 40px;"></div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content-area">
+            
+            <!-- Kartu Identitas Profil -->
+            <section class="profile-header-card">
+                <div class="avatar-circle" id="user-avatar">NP</div>
+                <h2 class="profile-name" id="user-name">Memuat...</h2>
+                <p class="profile-email" id="user-email">memuat email...</p>
+            </section>
+
+            <!-- Kartu Menu Pengaturan -->
+            <section class="profile-menu">
+                <div class="profile-item" onclick="showToast('Membuka Pengaturan Akun')">
+                    <div class="profile-left"><span style="font-size: 20px;">⚙️</span> Pengaturan Akun</div>
+                    <span class="menu-arrow">›</span>
+                </div>
+                <div class="profile-item" onclick="showToast('Mengubah Tampilan')">
+                    <div class="profile-left"><span style="font-size: 20px;">🌓</span> Tampilan Gelap / Terang</div>
+                    <span class="menu-arrow">›</span>
+                </div>
+                <div class="profile-item" onclick="showToast('Memulai Backup Data')">
+                    <div class="profile-left"><span style="font-size: 20px;">☁️</span> Backup Data</div>
+                    <span class="menu-arrow">›</span>
+                </div>
+                <div class="profile-item" onclick="showToast('Menu Ekspor/Impor')">
+                    <div class="profile-left"><span style="font-size: 20px;">📤</span> Ekspor / Import</div>
+                    <span class="menu-arrow">›</span>
+                </div>
+                <div class="profile-item" onclick="showToast('Reset Aplikasi')">
+                    <div class="profile-left"><span style="font-size: 20px;">🔄</span> Reset Aplikasi</div>
+                    <span class="menu-arrow">›</span>
+                </div>
+                <div class="profile-item" onclick="showToast('Pengaturan Notifikasi')">
+                    <div class="profile-left"><span style="font-size: 20px;">🔔</span> Notifikasi</div>
+                    <span class="menu-arrow">›</span>
+                </div>
+                <div class="profile-item" onclick="showToast('Bantuan & Dukungan')">
+                    <div class="profile-left"><span style="font-size: 20px;">❓</span> Bantuan & Dukungan</div>
+                    <span class="menu-arrow">›</span>
+                </div>
+                <div class="profile-item" id="logout-btn">
+                    <div class="profile-left" style="color: #ef4444;"><span style="font-size: 20px;">🚪</span> Keluar (Logout)</div>
+                    <span class="menu-arrow" style="color: #ef4444;">›</span>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Bottom Navigation (Profil Aktif) -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon"><i class="bi bi-house-door"></i></span><span class="nav-text">Beranda</span>
+            </a>
+            <a href="password.html" class="nav-item">
+                <span class="nav-icon"><i class="bi bi-key-fill"></i></span><span class="nav-text">Password</span>
+            </a>
+            <a href="notes.html" class="nav-item">
+                <span class="nav-icon"><i class="bi bi-journal-text"></i></span><span class="nav-text">Notes</span>
+            </a>
+            <a href="todo.html" class="nav-item">
+                <span class="nav-icon"><i class="bi bi-check2-square"></i></span><span class="nav-text">ToDo</span>
+            </a>
+            <a href="profil.html" class="nav-item active">
+                <span class="nav-icon"><i class="bi bi-person-fill"></i></span><span class="nav-text">Profil</span>
+            </a>
+        </nav>
+
+        <div id="toast" class="toast-box">Pesan muncul di sini</div>
+
+    </div>
+
+    <!-- Auth Guard & Page Logic -->
+    <script src="js/auth-guard.js" type="module"></script>
+    <script src="js/profil.js" type="module"></script>
+</body>
+</html>

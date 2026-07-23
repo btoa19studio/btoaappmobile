@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memuat... - BtoaApp</title>
+    <link rel="stylesheet" href="css/tema.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <p>Memuat...</p>
+
+    <!-- This page now uses modern JavaScript modules. -->
+    <script type="module">
+        // Import necessary functions and objects
+        import { auth } from './js/firebase-config.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+        // Listen for authentication state changes
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                // User is logged in, redirect to the dashboard
+                console.log('Pengguna ditemukan, mengarahkan ke dashboard...');
+                window.location.replace('dashboard.html');
+            } else {
+                // User is not logged in, redirect to the login page
+                console.log('Pengguna tidak ditemukan, mengarahkan ke login...');
+                window.location.replace('login.html');
+            }
+        });
+    </script>
+</body>
+</html>
+

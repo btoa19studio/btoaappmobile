@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dashboard App - BtoaApp</title>
+    <!-- Memanggil CSS Global dan CSS Khusus Dashboard -->
+    <link rel="stylesheet" href="css/tema.css?v=13">
+    <link rel="stylesheet" href="css/dashboard.css?v=13">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header-title">Beranda</h1>
+            <div class="header-actions">
+                <div class="icon-btn" title="Buka Kalender">📅</div>
+                <a href="profil.html" class="icon-btn">👤</a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content-area">
+            
+            <!-- Kartu Utama (Hero Card) -->
+            <section class="hero-card">
+                <div class="hero-top">
+                    <div>
+                        <p class="greeting" id="greeting-text">Selamat Pagi,</p>
+                        <h2 class="user-name" id="dash-name">Pengguna</h2>
+                    </div>
+                    <div class="time-box">
+                        <h3 id="current-time">--:--</h3>
+                        <p id="current-date">Memuat tanggal...</p>
+                    </div>
+                </div>
+                <div class="hero-bottom">
+                    <div class="location">
+                        <span>📍</span> <span id="current-location">Melacak lokasi...</span>
+                    </div>
+                    <div class="last-login" id="last-login-time">Login: Hari ini</div>
+                </div>
+            </section>
+
+            <!-- Grid Statistik -->
+            <div class="grid-dashboard">
+                <div class="dash-card" onclick="window.location.href='password.html'">
+                    <div class="dash-icon-wrapper">🔑</div>
+                    <div>
+                        <div class="dash-title">Password</div>
+                        <div class="dash-value" id="count-pass">0</div>
+                    </div>
+                </div>
+                <div class="dash-card" onclick="window.location.href='notes.html'">
+                    <div class="dash-icon-wrapper">📝</div>
+                    <div>
+                        <div class="dash-title">Notes</div>
+                        <div class="dash-value" id="count-notes">0</div>
+                    </div>
+                </div>
+                <div class="dash-card" onclick="window.location.href='todo.html'">
+                    <div class="dash-icon-wrapper">✅</div>
+                    <div>
+                        <div class="dash-title">ToDo Aktif</div>
+                        <div class="dash-value" id="count-todo">0</div>
+                    </div>
+                </div>
+                <div class="dash-card" onclick="window.location.href='travel.html'">
+                    <div class="dash-icon-wrapper">🛵</div>
+                    <div>
+                        <div class="dash-title">Travel</div>
+                        <div class="dash-value" id="count-travel">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riwayat Aktivitas -->
+            <section class="activity-section">
+                <h3 class="section-header">Aktivitas Terakhir</h3>
+                <ul class="activity-list" id="activity-container">
+                    <li class="activity-item">
+                        <div class="act-icon">⏳</div>
+                        <div class="act-details">
+                            <h4>Memuat data...</h4>
+                            <p>Tunggu sebentar</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+        </main>
+
+        <!-- Floating Action Menu (Speed Dial) -->
+        <div class="fab-container" id="fab-menu">
+            <button class="fab-item" title="Tambah ToDo">✅</button>
+            <button class="fab-item" title="Tambah Notes">📝</button>
+            <button class="fab-item" title="Tambah Password">🔑</button>
+            <button class="fab-main" title="Buka Menu">➕</button>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item active">
+                <span class="nav-icon">🏠</span><span class="nav-text">Beranda</span>
+            </a>
+            <a href="password.html" class="nav-item">
+                <span class="nav-icon">🔑</span><span class="nav-text">Password</span>
+            </a>
+            <a href="notes.html" class="nav-item">
+                <span class="nav-icon">📝</span><span class="nav-text">Notes</span>
+            </a>
+            <a href="todo.html" class="nav-item">
+                <span class="nav-icon">✅</span><span class="nav-text">ToDo</span>
+            </a>
+            <a href="travel.html" class="nav-item">
+                <span class="nav-icon">🛵</span><span class="nav-text">Travel</span>
+            </a>
+        </nav>
+
+        <!-- Modal Kalender -->
+        <div class="modal-overlay" id="calendar-modal">
+            <div class="modal-content">
+                <button class="close-modal">✖</button>
+                <div class="cal-header" id="cal-month-year">...</div>
+                <div class="cal-grid" id="cal-days-header">
+                    <div class="cal-day-name">M</div><div class="cal-day-name">S</div>
+                    <div class="cal-day-name">S</div><div class="cal-day-name">R</div>
+                    <div class="cal-day-name">K</div><div class="cal-day-name">J</div>
+                    <div class="cal-day-name">S</div>
+                </div>
+                <div class="cal-grid" id="cal-grid-body"></div>
+            </div>
+        </div>
+
+        <div id="toast" class="toast-box">Pesan muncul di sini</div>
+
+    </div>
+
+        <div id="toast" class="toast-box">Pesan muncul di sini</div>
+
+    </div>
+
+    <!-- Auth Guard & Page Logic -->
+    <script src="js/auth-guard.js" type="module"></script>
+    <script src="js/dashboard.js" type="module"></script>
+</body>
+</html>

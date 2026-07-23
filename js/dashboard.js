@@ -13,13 +13,9 @@ function updateClock() {
     const now = new Date();
     const hours = now.getHours();
     
-    // Jam (Format 00:00)
     document.getElementById('current-time').textContent = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-
-    // Tanggal (Contoh: Selasa, 21 Jul)
     document.getElementById('current-date').textContent = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short' });
 
-    // Sapaan berdasarkan waktu
     let greeting = "Selamat Malam,";
     if (hours >= 4 && hours < 11) greeting = "Selamat Pagi,";
     else if (hours >= 11 && hours < 15) greeting = "Selamat Siang,";
@@ -30,27 +26,18 @@ function updateClock() {
 // ====== LOKASI NAMA KOTA ======
 function getLocationName() {
     const locEl = document.getElementById('current-location');
-    
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
-            
             try {
-                // Menggunakan API gratis dari BigDataCloud untuk mencari nama wilayah
                 const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=id`);
                 const data = await response.json();
-                
-                // Ambil nama kota atau kecamatan
-                const city = data.city || data.locality || "Lokasi Ditemukan";
-                locEl.textContent = city;
+                locEl.textContent = data.city || data.locality || "Lokasi Ditemukan";
             } catch (error) {
-                // Jika offline atau error, kembalikan ke notifikasi
                 locEl.textContent = "Mode Offline Aktif";
             }
-        }, (error) => {
-            locEl.textContent = "Akses lokasi ditolak";
-        });
+        }, () => { locEl.textContent = "Akses lokasi ditolak"; });
     } else {
         locEl.textContent = "GPS tidak didukung";
     }
@@ -88,7 +75,7 @@ function renderCalendar() {
 async function loadDashboardData() {
     try {
         const userData = {
-            name: "Bagas Tahta", // Bisa Anda ganti nanti
+            name: "Bagas Tahta",
             lastLogin: "08:30 WIB",
             stats: { passwords: 12, notes: 5, todos: 3, travels: 1 },
             activities: [
@@ -123,25 +110,19 @@ async function loadDashboardData() {
     }
 }
 
-// ====== FLOATING ACTION MENU (SPEED DIAL) ======
+// ====== SPEED DIAL FAB ======
 function toggleFab() {
-    const fabMenu = document.getElementById('fab-menu');
-    fabMenu.classList.toggle('active');
+    document.getElementById('fab-menu').classList.toggle('active');
 }
 
 function openInputForm(menuType) {
-    // Tutup FAB menu
     toggleFab();
-    // Beri pesan toast sebagai placeholder sebelum form dibuat nantinya
     showToast("Membuka form input: " + menuType);
-    
-    // Logika masa depan untuk memunculkan modal/form input ditaruh di sini.
 }
 
-// ====== JALANKAN SAAT MULAI ======
 document.addEventListener('DOMContentLoaded', () => {
     updateClock();
-    setInterval(updateClock, 1000); // Update jam tiap detik
+    setInterval(updateClock, 1000);
     getLocationName(); 
     loadDashboardData(); 
 });
